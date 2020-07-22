@@ -15,10 +15,10 @@ public class Tetris {
 	{
         Jogo test = new Jogo();   
         
-        JFrame f = new JFrame("Tetris");
-		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		f.setSize(12*26+10, 26*23+25);
-		f.setVisible(true);
+//        JFrame f = new JFrame("Tetris");
+//		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		f.setSize(12*26+10, 26*23+25);
+//		f.setVisible(true);
 		
          
         while(true) {

@@ -4,23 +4,27 @@ import java.util.Arrays;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JTextArea;
+import javax.swing.SwingUtilities;
 
-public class Tabuleiro {
+public class Tabuleiro extends JFrame {
     private final int rows = 15;
     private final int collumn = 17;
 
     private char [][]  screen = new char[rows][collumn];
     
-	JFrame frame = new JFrame("Tetris");    
-    
+    private JTextArea text = new JTextArea();
+	
 	Tabuleiro() {
-
-		final JLabel label = new JLabel(screen.toString());
-		frame.getContentPane().add(label);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.pack();
-		frame.setVisible(true);
-		
+		setTitle("ASCII Text Tetris Test");
+        setSize(410, 490);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setVisible(true);
+        
+        add(text);
+        text.requestFocus();
+        
     	for(int i = 0; i < rows; i++)
     		Arrays.fill(this.screen[i], ' ');
     }
@@ -44,7 +48,7 @@ public class Tabuleiro {
             for(int j = 0; j<collumn; j++){
             	if(i>=pos[0] && i<(pos[0]+tamX)){
             		if(j>=pos[1] && j<(pos[1]+tamY)) {
-            			System.out.print(sprite[k][l]);
+            			print(i, j, "nada");
             			l++;
             			if(l >= tamY) {
             				l = 0;
