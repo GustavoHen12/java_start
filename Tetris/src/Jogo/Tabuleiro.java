@@ -13,7 +13,7 @@ public class Tabuleiro extends JFrame {
 
     private char [][]  screen = new char[rows][collumn];
     
-    private JTextArea text = new JTextArea();
+    private JTextArea text = new JTextArea(rows, collumn);
 	
 	Tabuleiro() {
 		setTitle("ASCII Text Tetris Test");
@@ -37,6 +37,7 @@ public class Tabuleiro extends JFrame {
     	int tamX = sprite.length, tamY=sprite[0].length;
     	
     	int k = 0, l = 0;
+    	String jogoStr = "";
     	//limpa terminal
     	System.out.print("\033[H\033[2J");
     	System.out.flush();
@@ -48,7 +49,7 @@ public class Tabuleiro extends JFrame {
             for(int j = 0; j<collumn; j++){
             	if(i>=pos[0] && i<(pos[0]+tamX)){
             		if(j>=pos[1] && j<(pos[1]+tamY)) {
-            			print(i, j, "nada");
+            			jogoStr = jogoStr.concat(Character.toString(sprite[k][l]));
             			l++;
             			if(l >= tamY) {
             				l = 0;
@@ -56,17 +57,16 @@ public class Tabuleiro extends JFrame {
             			}
             		}
             		else {
-                        System.out.print(screen[i][j]);
+            			jogoStr = jogoStr.concat(Character.toString(screen[i][j]));
             		}
             	}
             	else {
-                System.out.print(screen[i][j]);
+            		jogoStr = jogoStr.concat(Character.toString(screen[i][j]));
             	}
             }
-            System.out.printf("!\n");
+            jogoStr = jogoStr.concat("!\n");
         }
-        for(int i = 0; i <= collumn+1; i++) System.out.print("~");
-        System.out.println();
+        this.text.setText(jogoStr);
     }    
 
     public void copiaParaTabuleiro(pecas pecaCopia) {
